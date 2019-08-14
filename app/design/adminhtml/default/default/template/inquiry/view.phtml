@@ -6,21 +6,6 @@
  $item = $this->getAllDealer($this->getRequest()->getParam("delid"));
  $IsCreated = $this->getIsCreated($item['email']);
  $produckteinfo = unserialize(base64_decode($item['produckteinfo']));
- //echo "<pre>";
- //print_r($produckteinfo);
- 
- //$productIds = implode(',',$produckteinfo);
- //$items_count = sizeof($produckteinfo);
- //echo $items_count;
-/* if($items_count > 1)
- {
- 	$products = Mage::getModel('catalog/product')->getCollection()
-                ->addAttributeToFilter('entity_id', array('in' => $productIds));	 
- }else{
- 	$productId = $produckteinfo[0]; 
- 	$product = Mage::getModel('catalog/product')->load($productId);
-}*/
- $product = Mage::getModel('catalog/product')->load(52);
  
 
 ?>
@@ -39,26 +24,13 @@
     </table>
 </div>
 <?php	$prevurl = Mage::helper("adminhtml")->getUrl("inquiry/manage_inquiry/index/"); ?>
-<div class="back"><a href="<?php echo $prevurl;?>"><span><font size="4px">&laquo;</font> Back</span></a>&nbsp;&nbsp;
-<?php /*if($IsCreated==0) {?> 
-&nbsp;&nbsp;<a href="<?php echo Mage::helper("adminhtml")->getUrl("inquiry/manage_inquiry/createCustomer/multival/".$item['email'].'~~'.$item['firstname'].'~~'.$item['lastname'].'~~'.$item['company'].'~~'.$item['address'].'~~'.$item['city'].'~~'.$item['state'].'~~'.$item['zip'].'~~'.$item['phone'].'~~'.$item['country'].'~~'.$item['taxvat']);?>" onclick="javascript:return confirm('Are you sure  to create the account?')">Create Customer</a>
-<?php } */
-?>
-</div>
+<div class="back"><a href="<?php echo $prevurl;?>"><span><font size="4px">&laquo;</font> Back</span></a>&nbsp;&nbsp;</div>
 <div class="grid">
     <div class="hor-scroll">
     <table cellspacing="0" id="cmsPageGrid_table" class="data">
      <col width="10">
     <thead>
       <tbody>
-		<!--tr class="even pointer">
-        	<td class=""width="15%">produkteinfo</td>
-            <td class="a-left "><?php echo $item['produckteinfo'];?></td>
-        </tr-->
-		<!--tr class="even pointer">
-        	<td class=""width="15%">Subject</td>
-            <td class="a-left "><?php echo $item['subject'];?></td>
-        </tr-->
       	<tr class="even pointer">
         	<td class=""width="15%">First Name</td>
             <td class="a-left "><?php echo $item['firstname'];?></td>
@@ -134,26 +106,27 @@
 			<td width="15%"><strong>Quantity</strong></td>
 			<td width="15%"><strong>Description</strong></td>
 			<td width="15%"><strong>Price</strong></td>
-			<!--td width="15%"><strong>Attributes</strong></td-->
-			
         </tr>
         <?php 
         	 $i=0;
+			 
 			 foreach($produckteinfo as $prodata)
 			 {
-			 	 //echo $prodata['product']."<br>";
-			 	 $productId = $prodata['product'];
-			 	 $product = Mage::getModel('catalog/product')->load($productId)
-			 	
+			 	$productId = $prodata['product'];
+			 	$product = Mage::getModel('catalog/product')->load($productId);
+				if($product->getImage()== 'no_selection'){
+                        $image = $this->getSkinUrl('images/placeholder/thumbnail.jpg');
+                }else {
+                        $image = $product->getImageUrl();
+                }
         ?>
 		<tr class="even pointer">
-            <td align="center"><img src="<?php echo $product->getImageUrl(); ?>" width="100" height="100" /></td>
+            <td align="center"><img src="<?php echo $image; ?>" width="100" height="100" /></td>
 			<td align="left"><?php echo $product->getName(); ?></td>
 			<td align="left"><?php echo $product->getSku(); ?></td>
 			<td align="left"><?php echo $prodata['qty']; ?></td>
 			<td align="left"><?php echo $product->getShortDescription(); ?></td>
 			<td align="left"><?php echo Mage::helper('core')->currency($product->getPrice()); ?></td>
-			<!--td align="left"><?php echo "<strong>Color:</strong>".$product->getAttributeText('color')."<br>"; ?></td-->
         </tr>
     	<?php $i++; } ?>
     

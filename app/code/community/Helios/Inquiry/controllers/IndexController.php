@@ -105,8 +105,8 @@ class Helios_Inquiry_IndexController extends Mage_Core_Controller_Front_Action
 							</tr>
 						</table>';
 		$adminSubject = "Produkte Inquiry from New Customer";
-		$adminName = Mage::getStoreConfig('trans_email/ident_general/name'); //sender name
-		$adminEmail = Mage::getStoreConfig('trans_email/ident_general/email');
+		$adminName = Mage::getStoreConfig('quotation/emailsetting/sender_email'); //sender name
+		$adminEmail = Mage::getStoreConfig('quotation/emailsetting/sender_email');
 		$headers = "MIME-Version: 1.0" . "\r\n";
 		$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
 		$headers .= 'From:'.$adminEmail;
