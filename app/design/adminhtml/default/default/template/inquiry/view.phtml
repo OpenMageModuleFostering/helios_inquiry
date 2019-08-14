@@ -1,0 +1,167 @@
+<?php
+/**
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+ $item = $this->getAllDealer($this->getRequest()->getParam("delid"));
+ $IsCreated = $this->getIsCreated($item['email']);
+ $produckteinfo = unserialize(base64_decode($item['produckteinfo']));
+ //echo "<pre>";
+ //print_r($produckteinfo);
+ 
+ //$productIds = implode(',',$produckteinfo);
+ //$items_count = sizeof($produckteinfo);
+ //echo $items_count;
+/* if($items_count > 1)
+ {
+ 	$products = Mage::getModel('catalog/product')->getCollection()
+                ->addAttributeToFilter('entity_id', array('in' => $productIds));	 
+ }else{
+ 	$productId = $produckteinfo[0]; 
+ 	$product = Mage::getModel('catalog/product')->load($productId);
+}*/
+ $product = Mage::getModel('catalog/product')->load(52);
+ 
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+    <title></title>
+</head>
+<body>
+
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="head-dashboard"><?php echo $this->__('Customer Details') ?></h3></td>
+        </tr>
+    </table>
+</div>
+<?php	$prevurl = Mage::helper("adminhtml")->getUrl("inquiry/manage_inquiry/index/"); ?>
+<div class="back"><a href="<?php echo $prevurl;?>"><span><font size="4px">&laquo;</font> Back</span></a>&nbsp;&nbsp;
+<?php /*if($IsCreated==0) {?> 
+&nbsp;&nbsp;<a href="<?php echo Mage::helper("adminhtml")->getUrl("inquiry/manage_inquiry/createCustomer/multival/".$item['email'].'~~'.$item['firstname'].'~~'.$item['lastname'].'~~'.$item['company'].'~~'.$item['address'].'~~'.$item['city'].'~~'.$item['state'].'~~'.$item['zip'].'~~'.$item['phone'].'~~'.$item['country'].'~~'.$item['taxvat']);?>" onclick="javascript:return confirm('Are you sure  to create the account?')">Create Customer</a>
+<?php } */
+?>
+</div>
+<div class="grid">
+    <div class="hor-scroll">
+    <table cellspacing="0" id="cmsPageGrid_table" class="data">
+     <col width="10">
+    <thead>
+      <tbody>
+		<!--tr class="even pointer">
+        	<td class=""width="15%">produkteinfo</td>
+            <td class="a-left "><?php echo $item['produckteinfo'];?></td>
+        </tr-->
+		<!--tr class="even pointer">
+        	<td class=""width="15%">Subject</td>
+            <td class="a-left "><?php echo $item['subject'];?></td>
+        </tr-->
+      	<tr class="even pointer">
+        	<td class=""width="15%">First Name</td>
+            <td class="a-left "><?php echo $item['firstname'];?></td>
+        </tr>
+        <tr class="even pointer">
+        	<td class=""width="15%">Last Name</td>
+            <td class="a-left "><?php echo $item['lastname'];?></td>
+        </tr>
+        <tr class="even pointer">
+        	<td class=""width="15%">Company Name</td>
+            <td class="a-left "><?php echo $item['company'];?></td>
+        </tr>
+         
+         
+         <tr class="even pointer">
+        	<td class=""width="15%">Road</td>
+            <td class="a-left "><?php echo $item['road'];?></td>
+        </tr>
+         <tr class="even pointer">
+        	<td class=""width="15%">Zip</td>
+            <td class="a-left "><?php echo $item['zip'];?></td>
+        </tr>
+         <tr class="even pointer">
+        	<td class=""width="15%">Location</td>
+            <td class="a-left "><?php echo $item['location'];?></td>
+        </tr>
+        
+         <tr class="even pointer">
+        	<td class=""width="15%">Phone</td>
+            <td class="a-left "><?php echo $item['phone'];?></td>
+        </tr>
+        <tr class="even pointer">
+        	<td class=""width="15%">Email</td>
+            <td class="a-left "><?php echo $item['email'];?></td>
+        </tr>
+        <tr class="even pointer">
+        	<td class=""width="15%">Message</td>
+            <td class="a-left "><p><?php if($item['desc']==""): echo "-"; else:echo stripslashes($item['desc']);endif;?></p></td>
+        </tr>
+        
+        <tr class="even pointer">
+        	<td class=""width="15%">Created Date</td>
+            <td class="a-left "><?php echo date("F j, Y",strtotime($item['createddt']));?></td>
+        </tr>
+        
+        </tr>
+      </tbody>
+	</table>
+
+   	</div>
+</div>
+
+<div class="clearer"></div>
+
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="head-dashboard"><?php echo $this->__('Produckte Details') ?></h3></td>
+        </tr>
+    </table>
+</div>
+<div class="grid">
+    <div class="hor-scroll">
+	<table cellspacing="0" id="cmsPageGrid_table" class="data">
+     <col width="10">
+    <thead>
+      <tbody>
+		
+		<tr class="even pointer">
+        	<td width="10%"></td>
+			<td width="15%"><strong>Product</strong></td>
+			<td width="15%"><strong>SKU</strong></td>
+			<td width="15%"><strong>Quantity</strong></td>
+			<td width="15%"><strong>Description</strong></td>
+			<td width="15%"><strong>Price</strong></td>
+			<!--td width="15%"><strong>Attributes</strong></td-->
+			
+        </tr>
+        <?php 
+        	 $i=0;
+			 foreach($produckteinfo as $prodata)
+			 {
+			 	 //echo $prodata['product']."<br>";
+			 	 $productId = $prodata['product'];
+			 	 $product = Mage::getModel('catalog/product')->load($productId)
+			 	
+        ?>
+		<tr class="even pointer">
+            <td align="center"><img src="<?php echo $product->getImageUrl(); ?>" width="100" height="100" /></td>
+			<td align="left"><?php echo $product->getName(); ?></td>
+			<td align="left"><?php echo $product->getSku(); ?></td>
+			<td align="left"><?php echo $prodata['qty']; ?></td>
+			<td align="left"><?php echo $product->getShortDescription(); ?></td>
+			<td align="left"><?php echo Mage::helper('core')->currency($product->getPrice()); ?></td>
+			<!--td align="left"><?php echo "<strong>Color:</strong>".$product->getAttributeText('color')."<br>"; ?></td-->
+        </tr>
+    	<?php $i++; } ?>
+    
+      </tbody>
+	</table>
+</div>
+</div>
+
+
+</body>
+</html>

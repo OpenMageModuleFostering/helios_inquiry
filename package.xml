@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Helios_Inquiry</name>
+    <version>0.1.1</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Request For Quote.</summary>
+    <description>You can send Request For Quote for particular product or for all product which you are add into your wishlist.</description>
+    <notes>This is Stable version.</notes>
+    <authors><author><name>Helios</name><user>Solutions</user><email>hsmagento.support@heliossolutions.in</email></author></authors>
+    <date>2013-12-10</date>
+    <time>04:50:17</time>
+    <contents><target name="mageetc"><dir name="modules"><file name="Helios_Inquiry.xml" hash="36da13c066feb9f8eed31c259014a192"/></dir></target><target name="magecommunity"><dir name="Helios"><dir name="Inquiry"><dir name="Block"><file name="About.php" hash="691c6b5a4628b8365631301210f974b3"/><file name="Inquiry.php" hash="5dbd232ef05babc7279066f5b65f6109"/><dir name="Manage"><file name="Inquiry.php" hash="f958d2ff5e4ae22975f29d493b27b15e"/></dir></dir><dir name="Helper"><file name="Data.php" hash="15231d946593e8ecb05a52d013c0e44e"/></dir><dir name="Model"><file name="Inquiry.php" hash="7ac0d85126e181fb010f2b1ced389913"/><dir name="Mysql4"><dir name="Inquiry"><file name="Collection.php" hash="06a54ae1e0d9530091cb088c7eceeed1"/></dir><file name="Inquiry.php" hash="92aa486552abd38768509689e6f54377"/></dir></dir><dir name="controllers"><file name="IndexController.php" hash="b90b9d320b66a734d604d473e3dd9ea0"/><dir name="Manage"><file name="InquiryController.php" hash="15523025cd433472f61fa5c626ed5b42"/></dir></dir><dir name="etc"><file name="adminhtml.xml" hash="a66146fdaf36205b8d2b41a239c269de"/><file name="config.xml" hash="c10524c872cf1b930cfb2a6701dfb61d"/><file name="system.xml" hash="f1baa7485e1e6c74d160693c923bb522"/></dir><dir name="sql"><dir name="inquiry_setup"><file name="mysql4-install-0.1.1.php" hash="44f1a633e76cfcd6f22761612c13bc9b"/></dir></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="inquiry.xml" hash="ca5a9dd55f3aef957f8e3835518f44f8"/></dir><dir name="template"><dir name="inquiry"><file name="inquiry.phtml" hash="d0c66e84b3fe8935d7b6e30efc01d9f7"/><file name="view.phtml" hash="cd5ea5061dee6f7aa0db660ad43badb2"/></dir></dir></dir></dir></dir><dir name="frontend"><dir name="default"><dir name="default"><dir name="layout"><file name="inquiry.xml" hash="ac67ff269acc8487c7f8a01f1a5736e6"/><file name="wishlist.xml" hash="05271d33c0c350ebd246854b09621b16"/></dir><dir name="template"><dir name="inquiry"><file name="inquiry.phtml" hash="cc6a6bb197be8cf5564bb53e534cce30"/><file name="thanks.phtml" hash="8a404593f7c09edb17d86821b8fbd622"/></dir><dir name="wishlist"><dir name="item"><dir name="column"><file name="cart.phtml" hash="21680c39d00e06d6a084bfee98bf40c8"/><file name="image.phtml" hash="0d715312206341c9a2690f730e765154"/><file name="info.phtml" hash="ad7341ea7c77c73212ab56fc4f8fcbc6"/><file name="remove.phtml" hash="cde507827b5765fd03ea57d435f242c8"/></dir><dir name="configure"><file name="addto.phtml" hash="ef68254fee66c9ac36232238137d1e50"/></dir></dir><file name="view.phtml" hash="6c5a207d5d40f48381c0ab673abbc3a8"/></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="images"><dir name="Helios"><file name="favicon.ico" hash="4b97fae574b5202973c8c032affd0049"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

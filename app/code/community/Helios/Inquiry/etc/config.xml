@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+      <Helios_Inquiry>
+        <version>0.1.1</version>
+      </Helios_Inquiry>
+    </modules>
+	
+  <global>
+    <blocks>
+      <inquiry>
+        <rewrite>
+          <inquiry>Helios_Inquiry_Block_Inquiry</inquiry>
+        </rewrite>		
+      </inquiry>
+	  <inquiry>
+                <class>Helios_Inquiry_Block</class>
+       </inquiry>
+    </blocks>
+	<models>
+		<inquiry>
+			<class>Helios_Inquiry_Model</class>
+			<resourceModel>inquiry_mysql4</resourceModel>
+		</inquiry>
+		<inquiry_mysql4>
+			<class>Helios_Inquiry_Model_Mysql4</class>
+			<!-- declate table test -->
+			<entities>
+				<inquiry>
+					<table>produkteinquiry</table>
+				</inquiry>
+			</entities>
+			<!-- -/- -->
+		</inquiry_mysql4>
+	</models>
+	<helpers> <!-- Must for admin section Module -->
+		<inquiry>
+			<class>Helios_Inquiry_Helper</class>
+		</inquiry>
+		<wishlist>
+			<rewrite>
+				<data>Helios_Inquiry_Helper_Data</data>
+			</rewrite>
+		</wishlist>
+	</helpers>
+	 <resources>
+    <!-- ... -->
+		<inquiry_setup>
+			<setup>
+				<module>Helios_Inquiry</module>
+			</setup>
+			<connection>
+				<use>core_setup</use>
+			</connection>
+		</inquiry_setup>
+		<!-- ... -->
+	</resources> 
+  </global>
+  <admin><!-- Must for admin section Module -->
+		<routers>
+			<inquiry>
+				<use>admin</use>
+				<args>
+					<module>Helios_Inquiry</module>
+					<frontName>inquiry</frontName>
+				</args>
+			</inquiry>
+        </routers>
+    </admin>
+  <frontend><!-- Name of folder Frontend in app/design folder. -->
+    <routers>
+      <inquiry>
+        <use>standard</use>
+        <args>
+          <module>Helios_Inquiry</module>
+          <frontName>inquiry</frontName>
+        </args>
+      </inquiry>
+    </routers>
+    <layout>
+      <updates>
+        <inquiry>
+          <file>inquiry.xml</file>
+        </inquiry>
+      </updates>
+    </layout>
+  </frontend>
+  
+  <!--To show module in admin sectino with top menu link bellow two things needed. <menu> tag to create menu item. and <layout> tag to define xml file for layout will be in  layout folder of adminhtml.  -->
+  <adminhtml><!-- Name of folder Adminhtml in app/design folder. -->
+		<menu><!-- To display menu in admin section top menu. -->
+			<inquiry module="inquiry">
+				<title>Customers Inquiries</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="inquiry">
+						<title>Customers Management</title>
+						<sort_order>0</sort_order>
+						<action>inquiry/manage_inquiry</action> <!-- This is url of admin section module page. we can define it's controller any ware. Here "inquiry" is module name while "manage" is folder name that will be in "controller" folder and 2nd "inquiry" is name of the controller. its action will be indexAction.  -->
+					</items>
+				</children>
+			</inquiry>
+		</menu>
+    	<layout>
+            <updates>
+                <inquiry>
+                    <file>inquiry.xml</file><!--Name of the admin sectin layout file. It will be placed in app/design/adminhtml/default/default/layout folder. It's phtml file will be at same path but in "template" folder. -->
+                </inquiry>
+            </updates>
+        </layout>
+		
+	</adminhtml>
+</config>

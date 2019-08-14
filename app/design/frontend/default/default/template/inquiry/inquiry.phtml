@@ -1,0 +1,132 @@
+<?php
+/**
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+
+<div class="article_inquiry">
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="title">
+<h1><?php echo $this->__(Mage::getStoreConfig('quotation/quotation_gp/title_field')) ?></h1>
+</div>
+<div class="description"><?php echo $this->__(Mage::getStoreConfig('quotation/quotation_gp/quotation_desc')) ?></div>
+<form name="dealerInquiry" id="dealerInquiry" action="<?php echo $this->getUrl('inquiry/index'); ?>" method="post">
+<input type="hidden" name="produkteinfo" value="<?php echo $this->getWishlistItemsInquiry(); ?>" />
+
+
+<div class="fieldset">
+<fieldset>
+    <ul class="form-list">
+        <li id="billing-new-address-form">
+        <fieldset>
+            <input type="hidden" id="billing:address_id" value="" name="billing[address_id]">
+            <ul>
+                <li class="fields"><div class="customer-name">
+    <div class="field name-firstname">
+        <label class="required" for="billing:firstname"><em>*</em>First Name</label>
+        <div class="input-box">
+            <input type="text" value="<?php echo Mage::helper('inquiry')->getFirstName(); ?>" class="input-text required-entry" maxlength="255" title="First Name" value="" name="firstname" id="billing:firstname" autocomplete="OfF" >
+        </div>
+    </div>
+    <div class="field name-lastname">
+        <label class="required" for="billing:lastname"><em>*</em>Last Name</label>
+        <div class="input-box">
+            <input type="text" value="<?php echo Mage::helper('inquiry')->getLastName(); ?>" class="input-text required-entry" maxlength="255" title="Last Name" value="" name="lastname" id="billing:lastname">
+        </div>
+    </div>
+</div>
+</li>
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:company">Company</label>
+                        <div class="input-box">
+                            <input type="text" class="input-text " title="Company" value="<?php  echo Mage::helper('inquiry')->getCompanyName();?>" name="company" id="billing:company">
+                        </div>
+                    </div>
+                            <div class="field">
+                        <label class="required" for="billing:email"><em>*</em>Email Address</label>
+                        <div class="input-box">
+                            <input type="text" value="<?php echo Mage::helper('inquiry')->getEmail(); ?>" class="input-text validate-email required-entry" title="Email Address" value="" id="billing:email" name="email">
+                        </div>
+                    </div>
+                        </li>
+                        
+                        
+                                        <li class="fields">
+                    <div class="field">
+                        <label class="required" for="billing:city"><em>*</em>City</label>
+                        <div class="input-box">
+                            <input type="text" id="billing:city" class="input-text  required-entry" value="<?php  echo Mage::helper('inquiry')->getCity();?>" name="city" title="City">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="required" for="billing:region_id"><em>*</em>State/Province</label>
+                        <div class="input-box">                                                       
+                            <input type="text" id="billing:city" class="input-text  required-entry" name="state" title="State" value="<?php  echo Mage::helper('inquiry')->getState();?>">
+                        </div>
+                    </div>
+                </li>
+                <li class="fields">
+                    <div class="field">
+                        <label class="required" for="billing:postcode"><em>*</em>Zip/Postal Code</label>
+                        <div class="input-box">
+                            <input type="text" class="input-text validate-zip-international  required-entry" value="<?php  echo Mage::helper('inquiry')->getState();?>" id="billing:postcode" name="zip" title="Zip/Postal Code">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="required" for="billing:country_id"><em>*</em>Country</label>
+                        <div class="input-box">
+						<?php  echo Mage::helper('inquiry')->getCountry();?>						    
+						</div>
+                    </div>
+                </li>
+                <li class="fields">
+                    <div class="field">
+                        <label class="required" for="billing:telephone"><em>*</em>Telephone</label>
+                        <div class="input-box">
+                            <input type="text" id="billing:telephone" class="input-text  required-entry" title="Telephone" value="<?php  echo Mage::helper('inquiry')->getTelephone();?>" name="phone">
+                        </div>	
+                    </div>                   
+                </li>
+				 <li class="fields">
+                    <div class="field">
+                        <label class="required" for="billing:telephone"><em>*</em>Comments</label>
+                        <div class="input-box">
+                            <textarea cols="10" rows="5" name="comments" class="required-entry"></textarea>
+                        </div>
+                    </div>                   
+                </li>
+		</ul>
+            
+
+
+        </fieldset>
+     </li>
+            
+        
+        </ul>
+        <div class="inquiry_btn">
+	<div class="buttons-set"><button class="button" title="<?php echo $this->__('Nachricht absenden') ?>" type="submit" name="SUBMIT" value="SUBMIT"><span><span>Send Quote</span></span></button></div>
+</div>
+</fieldset>
+
+</div>
+</form>
+
+</div>
+<script type="text/javascript">
+//< ![CDATA[
+var customForm = new VarienForm('dealerInquiry');
+//]]>
+	function isNumberKey(evt)
+	{
+		 var charCode = (evt.which) ? evt.which : evt.keyCode
+		 if (charCode > 31 && (charCode < 48 || charCode > 57))
+		 {
+		 	alert('Please Enter Numeric Values only');
+			return false;
+		}		
+		 return true;
+	} 
+
+</script> 
