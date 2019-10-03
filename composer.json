@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/Helios_Inquiry",
+    "name": "openmage-module-fostering\/helios_inquiry",
     "type": "magento-module",
-    "license": "OSL",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "Request For Quote.",
     "authors": [
