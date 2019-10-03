@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Helios_Inquiry",
+    "name": "OpenMageModuleFostering\/Helios_Inquiry",
     "type": "magento-module",
     "license": "OSL",
     "homepage": "",
     "description": "Request For Quote.",
     "authors": [
-    {
-        "name": "Helios",
-        "email": "hsmagento.support@heliossolutions.in"
-    }
-],
+        {
+            "name": "Helios",
+            "email": "hsmagento.support@heliossolutions.in"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
